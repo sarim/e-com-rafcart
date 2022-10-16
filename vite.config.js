@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
@@ -13,6 +14,15 @@ export default defineConfig({
         },
       },
     }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'src/assets/images/**/*.{jpg,jpeg,png,svg}',
+          dest: '.'
+        }
+      ],
+      flatten: false
+    })
   ],
   resolve: {
     alias: {
